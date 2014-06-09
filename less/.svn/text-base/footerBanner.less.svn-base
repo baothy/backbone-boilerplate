@@ -1,0 +1,106 @@
+.footer-lvl {
+  margin: 0 auto;
+  position: relative;
+  width: 200px;
+  li {
+    float: left;
+    margin-right: 10px;
+
+    &:first-child {
+      &::after {
+        content: '';
+        position: absolute;
+        border-right: 1px solid #000;
+        width: 5px;
+        height: 13px;
+        top: 6px;
+      }
+    }
+
+    a {
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.logos {
+  clear: both;
+  height: 135px;
+  margin: 0 auto;
+  overflow: auto;
+  width: 623px;
+
+  a {
+    display: inline-block;
+    float: left;
+    margin-right: 72px;
+  }
+
+  ul {
+    position: relative;
+    // width: 570px;
+    // margin: 0 auto;
+    overflow: auto;
+    width: 623px;
+
+    li {
+      float: left;
+      margin-right: 50px;
+      cursor: pointer;
+    }
+
+    &:last-child {
+     margin-right: 0;
+    }
+  }
+
+  .quebecor {
+    .img-background('logos/quebecor.png', 100px, 42px);
+  }
+  .cmf {
+    .img-background('logos/cmf.png', 93px, 23px);
+    margin-top: 9px;
+  }
+  .zone3 {
+    .img-background('logos/zone3.png', 82px, 22px);
+    margin-top: 8px;
+  }
+  .lvl {
+    .img-background('logos/lvl.png', 43px, 25px);
+    margin-top: 4px;
+  }
+  .tele-quebec {
+    .img-background('logos/teleqc.png', 53px, 38px);
+    margin-top: 3px;
+  }
+
+  .footer-credit {
+    display: block;
+    position: absolute;
+    height: 5.5rem;
+    width: 100%;
+    bottom: 0;
+    background-color: #2a5669;
+    text-align: center;
+    left: 0;
+    // margin-left: -30px;
+    top: 0;
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+.credit-footer p {
+  font-size: 14px !important;
+}
+
+#tqFooterBar {
+  margin-top: 0px !important;
+}

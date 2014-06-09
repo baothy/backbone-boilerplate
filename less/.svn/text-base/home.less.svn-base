@@ -1,0 +1,145 @@
+#home {
+  min-height: 400px;
+  h1 {
+    background: url('../imgs/assets/logo.png') no-repeat;;
+    width: 102.8rem;
+    height: 13.3rem;
+    margin: 20px auto;
+    text-indent: -5000px;
+    color: #fff2d5;
+  }
+  .column308 {
+    margin-right: 0;
+    margin-left: 2rem;
+  }
+  ul.menu {
+    z-index: 0;
+    position: relative;
+    li {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+  }
+  span.scroll-down {
+    // background-size: 21px 43px;
+    .sprite-background(-177px 0, 38px, 38px);
+    background-image: url('../imgs/assets/scrolldown.png') !important;
+    background-position: 6px 0;
+    height: 43px;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+    margin-bottom: 7rem;
+    text-shadow: 2px 2px 0px #000;
+
+    &::before, &::after {
+      text-transform: uppercase;
+      .font-title;
+      vertical-align: middle;
+      line-height: 4rem;
+      position: absolute;
+    }
+    &::before {
+      content: "scroll";
+      left: -7.5rem;
+    }
+    &::after {
+      content: "down";
+      right: -6rem;
+    }
+  }
+}
+
+.reelz {
+  .showtimes {
+    table {
+      thead {
+        th {
+          &::after {
+            background-image: url('../imgs/assets/reelzlogo_small.png');
+            background-size: 130px 36px;
+            background-position: 15px 31px;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.showtimes {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  table {
+    width: 62.5rem;
+    border-collapse: collapse;
+    border:.5rem solid @border-popup;
+    text-align: left;
+    color: @offwhite;
+    .font-title;
+    font-size: @nav;
+    margin: .5rem;
+    thead {
+      background-color: @blue;
+      text-indent: -5000px;
+      th {
+        height: 9.2rem;
+        &::after {
+          content: "";
+          margin-bottom: -0.5rem;
+          background-image: url('../imgs/assets/logo/DiscoveryLogo-showtimes.png');
+          background-size: 196px 65px;
+          background-position: 0px 0px;
+          margin: 0;
+          margin-top: -1.7rem;
+          height: 65px;
+          display: block;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-top: .5rem solid @border-popup;
+        height: 6.2rem;
+        background-color: fade(@mid-blue, 70%);
+        &:nth-child(1) {
+          background-color: @mid-blue;
+          color: @white;
+        }
+        &:nth-child(2) {
+          background-color: fade(@mid-blue, 90%);
+        }
+        &:nth-child(3) {
+          background-color: fade(@mid-blue, 80%);
+        }
+        &:nth-child(4) {
+          background-color: fade(@mid-blue, 70%);
+        }
+        td {
+          vertical-align: middle;
+          &:nth-child(1) {
+            padding-left: 2rem;
+            width: 49%;
+          }
+          &:nth-child(2) {
+            width: 20%;
+            &::after {
+              content: "";
+              display: inline-block;
+              margin-bottom: -.5rem;
+              width: 60px !important;
+              .sprite-background(-325px 0, 5.6rem, 5.6rem);
+            }
+          }
+          &:nth-child(3) {
+            width: 29%;
+            padding-right: 2rem;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

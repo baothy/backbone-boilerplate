@@ -1,0 +1,79 @@
+// Require.js allows us to configure shortcut alias
+require.config({
+  // urlArgs: "bust=" + (new Date()).getTime(),
+  urlArgs: "v=2.1",
+  paths: {
+    async: 'libs/require/async',
+    jquery: 'libs/jquery/jquery-min',
+    lodash: 'libs/lodash/lodash.min',
+    underscore: 'libs/underscore/underscore-min',
+    backbone: 'libs/backbone/backbone',
+    backboneOverride: 'libs/backbone/backbone-override-sync',
+    hhtml5Preloader: 'plugins/html5preloader/html5Preloader',
+    jqueryAjaxTransportXdomainRequest: 'plugins/jqueryAjaxTransportXdomainRequest/jquery.xdomainrequest.min',
+    fastClick: 'plugins/fastClick/fastclick',
+    modal: 'plugins/modal/jquery.modal',
+    templates: '../templates',
+    config: 'config/config',
+    preload: 'config/preload',
+    utils: 'utils/utils',
+    cookie: 'plugins/cookie/jquery.cookie',
+    unslider: 'plugins/unslider/unslider',
+    swfObject: 'plugins/swfObject/swfObject',
+    flowplayer: 'plugins/flowplayer/flowplayer.min',
+    mousewheel: 'plugins/mousewheel/jquery.mousewheel',
+    swipeview: 'plugins/swipeview/swipeview',
+    odometer: 'plugins/odometer/odometer',
+    moment: 'plugins/moment/moment',
+    momentFR: 'plugins/moment/fr.js'
+  },
+  shim: {
+    backbone: {
+        deps: ['jquery','lodash'],
+        exports: 'Backbone'
+    },
+    jqueryEasing: {
+        deps: ['jquery'],
+        exports: 'JqueryEasing'
+    },
+    utils: {
+        deps: ['jquery'],
+        exports: 'Utils'
+    },
+    modal: {
+        deps: ['jquery'],
+        exports: 'Modal'
+    },
+    cookie: {
+      deps: ['jquery'],
+      exports: 'Cookie'
+    },
+    unslider: {
+      deps: ['jquery'],
+      exports: 'Unslider'
+    },
+    flowplayer: {
+      deps: ['jquery'],
+      exports: 'Flowplayer'
+    },
+    mousewheel: {
+      deps: ['jquery'],
+      exports: 'Mousewheel'
+    },
+    jqueryAjaxTransportXdomainRequest: {
+      deps: ['jquery'],
+      exports: 'JqueryAjaxTransportXdomainRequest'
+    }
+  }
+});
+
+require([
+  // Load our app module and pass it to our definition function
+  'app'
+
+], function(App){
+  // The "app" dependency is passed in as "App"
+  // Again, the other dependencies passed in are not "AMD" therefore don't pass a parameter to this function
+  App.initialize();
+
+});

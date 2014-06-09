@@ -1,0 +1,386 @@
+.webGames {
+  // overflow: auto;
+  // height: 100%;
+  left: 24px;
+  position: relative;
+
+  &>li {
+    font-family: ArialBlack;
+    float: none;
+    height: 96px;
+    width: 90%;
+    border: 2px solid #000;
+    box-shadow: 4px 4px #000;
+    position: relative;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: left;
+    padding-left: 73px;
+    text-transform: uppercase;
+    padding-top: 7px;
+    font-size: 17px;
+    text-shadow: 2px 2px 0 #000;
+
+    &.quiz, &.survey, &.vote {
+      width: 300px;
+      float: left;
+      left: 65px;
+    }
+
+    &.quiz {
+      position: fixed;
+      top: 150px;
+      padding-left: 86px;
+      padding-top: 20px;
+      margin-top: 4px;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff7701), color-stop(100%,#de2545));
+      background: gradient(linear, left top, left bottom, color-stop(0%,#ff7701), color-stop(100%,#de2545));
+      background: linear-gradient(linear, left top, left bottom, color-stop(0%,#ff7701), color-stop(100%,#de2545));
+      background: -moz-linear-gradient(top, #ff7701 0%, #de2545 100%);
+      background: -ms-linear-gradient(top, #ff7701 0%, #de2545 100%);
+      &::after {
+        content: '';
+        background-image: url('../imgs/assets/quiz-img.png');
+        background-repeat: no-repeat;
+        border-right: 3px solid #000;
+        height: 96px;
+        width: 69px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      &:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff5901 ), color-stop(100%,#d71c33 ));
+        background: gradient(linear, left top, left bottom, color-stop(0%,#ff5901 ), color-stop(100%,#d71c33 ));
+        background: -moz-linear-gradient(top, #ff5901 0%, #d71c33 100%);
+        background: -ms-linear-gradient(top, #ff5901 0%, #d71c33 100%);
+        cursor: pointer;
+
+        &::after {
+          -webkit-filter: brightness(95%);
+          -moz-filter: brightness(95%);
+          filter: brightness(95%);
+          filter: brightness(0.95);
+        }
+
+        .arrowright {
+          display: block;
+          background: linear-gradient(-45deg, darken(#f1551d, 5%) -100%, darken(#ed4927, 5%) 200%) !important;
+          background: -webkit-linear-gradient(-45deg, darken(#f1551d, 5%) -100%, darken(#ed4927, 5%) 200%) !important;
+          background: -moz-linear-gradient(-45deg, darken(#f1551d, 5%) -100%, darken(#ed4927, 5%) 200%) !important;
+          background: -ms-linear-gradient(-45deg, darken(#f1551d, 5%) -100%, darken(#ed4927, 5%) 200%) !important;
+        }
+      }
+
+      &.selected {
+        .arrowright {
+          display: block;
+          background: -webkit-linear-gradient(-45deg, #f1551d -100%, #ed4927 200%);
+          background: -moz-linear-gradient(-45deg, #f1551d -100%, #ed4927 200%);
+          background: -ms-linear-gradient(-45deg, #f1551d -100%, #ed4927 200%);
+          background: linear-gradient(-45deg, #f1551d -100%, #ed4927 200%);
+        }
+      }
+    }
+
+    &.survey {
+      position: fixed;
+      top: 274px;
+      padding-left: 86px;
+      padding-top: 13px;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2193d1), color-stop(100%,#5524bf));
+      background: gradient(linear, left top, left bottom, color-stop(0%,#2193d1), color-stop(100%,#5524bf));
+      background: -moz-linear-gradient(top, #2193d1 0%, #5524bf 100%);
+      background: -ms-linear-gradient(top, #2193d1 0%, #5524bf 100%);
+
+      &::after {
+        content: '';
+        background-image: url('../imgs/assets/survey-img.png');
+        background-repeat: no-repeat;
+        border-right: 3px solid #000;
+        height: 96px;
+        width: 69px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      &:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken(#2193d1, 5%) ), color-stop(100%,darken(#5524bf, 5%) ));
+        background: gradient(linear, left top, left bottom, color-stop(0%,darken(#2193d1, 5%) ), color-stop(100%,darken(#5524bf, 5%) ));
+        background: -moz-linear-gradient(top, darken(#2193d1, 5%) 0%, darken(#5524bf, 5%) 100%);
+        background: -ms-linear-gradient(top, darken(#2193d1, 5%) 0%, darken(#5524bf, 5%) 100%);
+        cursor: pointer;
+
+        &::after {
+          -webkit-filter: brightness(95%);
+          -moz-filter: brightness(95%);
+          -ms-filter: brightness(95%);
+          filter: brightness(95%);
+          filter: brightness(0.95);
+        }
+
+        .arrowright {
+          display: block;
+          background: linear-gradient(-45deg, darken(#414fc6, 5%) -100%, darken(#3765c9, 5%) 200%) !important;
+        }
+      }
+
+      &.selected {
+        .arrowright {
+          display: block;
+          background: linear-gradient(-45deg, #414fc6 -100%, #3765c9 200%);
+        }
+      }
+    }
+
+    &.vote {
+      position: fixed;
+      top: 394px;
+      padding-left: 86px;
+      padding-top: 12px;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c4d020), color-stop(100%,#329500));
+      background: gradient(linear, left top, left bottom, color-stop(0%,#c4d020), color-stop(100%,#329500));
+      background: -moz-linear-gradient(top, #c4d020 0%, #329500 100%);
+      background: -ms-linear-gradient(top, #c4d020 0%, #329500 100%);
+      &::after {
+        content: '';
+        background-image: url('../imgs/assets/vote-img.png');
+        background-repeat: no-repeat;
+        border-right: 3px solid #000;
+        height: 96px;
+        width: 69px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      &:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken(#c4d020, 5%) ), color-stop(100%,darken(#329500, 5%) ));
+        background: -moz-linear-gradient(top, darken(#c4d020, 5%) 0%, darken(#329500, 5%) 100%);
+        background: -ms-linear-gradient(top, darken(#c4d020, 5%) 0%, darken(#329500, 5%) 100%);
+        background: gradient(linear, left top, left bottom, color-stop(0%,darken(#c4d020, 5%) ), color-stop(100%,darken(#329500, 5%) ));
+        cursor: pointer;
+
+        &::after {
+          -webkit-filter: brightness(95%);
+          -moz-filter: brightness(95%);
+          -ms-filter: brightness(95%);
+          filter: brightness(95%);
+          filter: brightness(0.95);
+        }
+
+        .arrowright {
+          display: block;
+          background: linear-gradient(-45deg, darken(#72ae0e, 5%) -100%, darken(#88b713, 5%) 200%) !important;
+        }
+      }
+
+      &.selected {
+        .arrowright {
+          display: block;
+          background: linear-gradient(-45deg, #72ae0e -100%, #88b713 200%);
+        }
+      }
+    }
+
+    .arrowright {
+      display: none;
+       position: absolute;
+        top: 41px;
+        right: -4.5px;
+        margin: -.35em -.45em;
+        border-right: inherit; border-bottom: inherit;
+        /* pick width & height such that
+           the diagonal of the square is 1em = 1/3 the height of the warn bubble */
+        width: 20px;
+        height: 20px;
+        border-radius: 0 0 0 .2em;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        box-shadow: 1px 3px #000;
+    }
+
+    p {
+      color: #fff !important;
+      text-shadow: 2px 1px #000;
+      text-transform: none;
+      font-size: 13px;
+      line-height: 16px;
+      margin-top: 5px;
+      width: 196px;
+      font-family: arial;
+    }
+  }
+
+  .hockey-banner {
+    width: 635px;
+    float: right;
+    height: 340px;
+    background-size: contain;
+    font-size: 18px;
+    font-family: arial;
+    text-transform: initial;
+    line-height: 20px;
+    // font-weight: bold;
+    background-repeat: no-repeat;
+    background-image: url('../imgs/assets/banner-vapeur.png');
+    background-size: cover;
+    box-shadow: none;
+    border: 0;
+    text-align: left;
+    margin-top: 55px;
+    border-radius: 0px;
+    /* android web browser hack */
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 20px 21px;
+    font-family: arial;
+    line-height: 24px;
+    margin-right: 21px;
+    top: -4px;
+    left: -12px;
+    text-shadow: 2px 2px #000;
+
+    strong {
+      font-family: arialblack;
+    }
+
+    &.completed {
+      background-image: url('../imgs/assets/banner-vapeur-completed.png');
+
+      .container-remaining-vote {
+        display: none;
+      }
+
+      .play {
+        width: 320px;
+        height: 67px;
+        background-color: #4e1e8d;
+        position: relative;
+        top: 182px;
+        left: 10px;
+        display: block;
+        border-radius: 5px;
+        border: 2px solid #000;
+        box-shadow: 3px 3px 0 #000;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        &::after {
+          content: 'Jouer';
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          color: #fff;
+          font-size: 24px;
+          font-family: arial;
+          font-weight: bold;
+          text-align: center;
+          left: 0;
+          right: 0;
+          line-height: 62px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: darken(#4e1e8d, 5%);
+        }
+      }
+    }
+
+    .container-remaining-vote {
+      li {
+        float: left;
+        font-family: arial black;
+
+        span {
+          font-family: bradbun;
+          color: #fff !important;
+
+          &.vote-count {
+            font-size: 60px;
+            top: 10px;
+            left: 18px;
+            position: absolute;
+          }
+
+          &.vote-txt {
+            font-size: 33px;
+            position: absolute;
+            left: 106px;
+            text-transform: lowercase;
+            top: 23px;
+          }
+        }
+      }
+
+      li:first-child {
+        position: absolute;
+        top: 151px;
+        left: 245px;
+        color: #fff;
+        text-transform: none;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial;
+        text-shadow: 2px 2px #000;
+      }
+
+      li:last-child {
+        height: 72px;
+        width: 207px;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e0365d), color-stop(100%, #d5263e));
+        background: -moz-linear-gradient(top, #e0365d 0%, #d5263e 100%);
+        background: -ms-linear-gradient(top, #e0365d 0%, #d5263e 100%);
+
+        background: gradient(linear, left top, left bottom, color-stop(0%, #e0365d), color-stop(100%, #d5263e));
+        position: absolute;
+        left: 359px;
+        top: 108px;
+        box-shadow: 2px 2px 0px 3px #000;
+        font-family: bradbun;
+        font-size: 39px;
+        line-height: 39px;
+        color: #fff;
+        text-align: left;
+        border-radius: 20px;
+        padding-left: 15px;
+        overflow-y: hidden;
+      }
+    }
+  }
+}
+
+
+.webgame-marker {
+  #container {
+    div {
+      float: none;
+    }
+  }
+
+  #tqFooterBar {
+    top: 515px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  footer.main {
+    top: 639px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+}

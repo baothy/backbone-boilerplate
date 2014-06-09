@@ -1,0 +1,116 @@
+.episodes {
+  .episode {
+    .img-background('episode.png', 970px, 309px);
+    position: relative;
+    margin-bottom: 30px;
+
+    &> div:first-child {
+      top: 24px;
+      left: 23px;
+      box-shadow: 0 0 2px 2px #000;
+      width: 448px;
+      height: 252px;
+      position: relative;
+    }
+
+    &.empty {
+      visibility: hidden;
+      position: absolute;
+      left: -1000000px;
+    }
+
+    .video {
+      width: 445px;
+      height: 250px;
+      border: 2px solid #000;
+      position: absolute;
+      top: 23px;
+      left: 23px;
+    }
+
+    .episode-title {
+      font-family: BradBun;
+      color: #fff;
+      text-shadow: 2px 2px 0px #000;
+      position: absolute;
+      left: 490px;
+      top: 20px;
+      font-size: 40px;
+    }
+
+    .episode-name {
+      font-family: BradBun;
+      position: relative;
+      left: 42px;
+      top: 55px;
+      font-size: 34px;
+      margin-top: 27px;
+      color: #000;
+    }
+
+    .episode-resume {
+      color: #000;
+      top: 129px;
+      position: absolute;
+      left: 491px;
+      letter-spacing: 0px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .episode-description {
+      color: #000;
+      font-size: 14px;
+      width: 450px;
+      position: absolute;
+      top: 128px;
+      left: 491px;
+      text-align: left;
+      letter-spacing: 0px;
+      line-height: 17px;
+      height: 150px;
+      overflow-y: auto;
+    }
+
+    .overlay-date-video {
+      background-color: rgba(0, 0, 0, 0.25);
+      position: absolute;
+      top: 24px;
+      left: 23px;
+      height: 40px;
+      width: 448px;
+      padding: 5px;
+    }
+
+    .diffusion-date {
+      color: #fff;
+      font-size: 12px;
+      font-style: italic;
+      text-shadow: 2px 2px #000;
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+
+    .rediffusion-date {
+      color: #fff;
+      font-size: 12px;
+      font-style: italic;
+      text-shadow: 2px 2px #000;
+      position: absolute;
+      top: 24px;
+      left: 5px;
+    }
+  }
+
+  .loadMore {
+    color: #fff;
+    font-family: BradBun;
+    position: relative;
+    left: 400px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

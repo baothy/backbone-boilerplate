@@ -1,0 +1,89 @@
+define(['jquery'
+], function (jquery) {
+
+  var prod_env                 = false;
+
+  var imgUrlBase               = 'imgs/assets/',
+      baseUrl                  = 'http://subito2.tst.lvlstudio.com/',
+      servicesBaseUrl          = baseUrl + 'service-login/login/',
+      serviceBaseUrlLogikmedia = baseUrl + 'service-logikmedia/',
+      serviceBaseUrlTvQc       = 'http://subitotexto.api.test.telequebec.tv/v1/',
+      serviceBaseUrlWebGames   = baseUrl + 'QuestionApi/';
+
+  var urlVideos        = 'videos/';
+  var urlVideoTutorial = baseUrl + 'swf/main/assets/tutorial/tutorial.flv';
+  var imageUrlTemplate = imgUrlBase + 'placeholder-image-preview.jpg';
+  var imageGenTuto     = imgUrlBase + 'img_gen_tuto.jpg';
+  var imgPlayButton    = imgUrlBase + 'btn-play.jpg';
+
+  var services = {
+    signup           : servicesBaseUrl             + 'user',
+    login            : servicesBaseUrl             + 'user/verify',
+    getUserById      : servicesBaseUrl             + 'user/',
+    forgotPwd        : servicesBaseUrl             + 'user/forgot',
+    usersCount       : servicesBaseUrl             + 'user/count',
+    validateEmail    : servicesBaseUrl             + 'user/validate/',
+    unsubscribe      : servicesBaseUrl             + 'unsubscribe',
+    getAvatar        : serviceBaseUrlLogikmedia    + 'avatar/{userid}',
+    getUser          : serviceBaseUrlLogikmedia    + 'users/',
+    getUserByGuid    : serviceBaseUrlLogikmedia    + 'userbyguid/',
+    getEpisodesList  : serviceBaseUrlTvQc          + 'produits/liste',
+    getEpisodesAvenir: serviceBaseUrlTvQc          + 'Produits/AVenir',
+    getEpDifAvenirByCurDate  : serviceBaseUrlTvQc  + 'Produits/AVenir?date={currentdate}&codediffusions=P',
+    getEpReDifAvenirByCurDate: serviceBaseUrlTvQc  + 'Produits/AVenir?date={currentdate}&codediffusions=RP',
+    getDateTime      : serviceBaseUrlTvQc          + 'DateTime',
+    getEpisodeInfo   : serviceBaseUrlTvQc          + 'medias?episodeNo={episode}',
+    getQuiz          : serviceBaseUrlWebGames      + 'question/Quiz/user/',
+    getSurvey        : serviceBaseUrlWebGames      + 'question/Survey?userID=',
+    getVote          : serviceBaseUrlWebGames      + 'question/Vote?userID=',
+    getNotifications : serviceBaseUrlWebGames      + 'question/notification/user/',
+    getNotificationQuiz: 'data/'                   + 'quizNotification.json',
+    getNotificationSurvey: 'data/'                 + 'surveyNotification.json',
+    getNotificationVote: 'data/'                   + 'voteNotification.json',
+    postSurvey: serviceBaseUrlWebGames             + 'question/Survey/answer/{userID}/{questionID}/{answerID}',
+    postVote: serviceBaseUrlWebGames               + 'question/Vote/answer/{userID}/{questionID}/{answerID}',
+    postQuiz         : serviceBaseUrlWebGames      + 'question/quiz/answer/{userID}/{questionID}/{answerID}'
+  };
+
+  var launchDate = '2013-01-02';
+
+  var flash = {
+    urlMinijeuBasePath: 'swf/Minijeux/',
+    urlAvatar: baseUrl + 'swf/AvatarBuilder/index2.html',
+    urlGame: baseUrl + 'swf/main/index2.html',
+    urlGameATouteVapeur: baseUrl + this.urlMinijeuBasePath + 'FootEnFeu'
+  };
+
+  var emissionInfo = {
+    beforeTime: {
+      day: '4',
+      hours: '20',
+      minutes: '0'
+    },
+    afterTime: {
+      day: '7',
+      hours: '23',
+      minutes: '59'
+    }
+  };
+
+  var webGames = {
+    totalVote: 20
+  };
+
+  return {
+    services: services,
+    imgUrlBase: imgUrlBase,
+    prod_env: prod_env,
+    launchDate: launchDate,
+    emissionInfo: emissionInfo,
+    flash: flash,
+    urlVideos: urlVideos,
+    imageUrlTemplate: imageUrlTemplate,
+    imgPlayButton: imgPlayButton,
+    imageGenTuto: imageGenTuto,
+    urlVideoTutorial: urlVideoTutorial,
+    webGames: webGames
+  };
+
+});

@@ -1,0 +1,156 @@
+define([
+  'backbone',
+  'config'
+], function(Backbone, config) {
+
+  var UserModel = Backbone.Model.extend({
+
+    initialize: function(model, options) {
+    },
+
+    defaults : {
+    },
+
+    url : function() {
+      return config.services.getProfile;
+    },
+
+    getUser: function (model) {
+      var that = this,
+          dfd  = $.Deferred();
+
+      window.user = model;
+
+      that.getIpAddress().done(function () {
+        dfd.resolve();
+      });
+
+      return dfd.promise();
+    },
+
+    getUserLocation: function () {
+      var dfd = $.Deferred(),
+          that = this;
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+
+            var lat      = position.coords.latitude,
+                lng      = position.coords.longitude;
+
+            if (!window.user.Vote) window.user.Vote = {};
+
+            window.user.Vote.Latitude = lat;
+            window.user.Vote.Longitude = lng;
+
+            dfd.resolve();
+          },
+
+          function(error) {
+            that.getIpAddress().done(function () {
+              dfd.resolve();
+            });
+
+          },
+          { timeout: 1000 }
+
+        );
+      } else {
+        that.getIpAddress().done(function () {
+          dfd.resolve();
+        });
+      }
+
+      return dfd.promise();
+    },
+
+    getIpAddress: function () {
+      var dfdIP = $.Deferred(),
+          isIe9 = ((navigator.appName.indexOf("Internet Explorer")!=-1) &&  navigator.appVersion.indexOf("MSIE 9")!=-1);
+
+      function funcCallback (data,status,xhr){
+        if (!window.user) window.user = {};
+        if (!window.user.Vote) window.user.Vote = {};
+
+        window.user.Vote.Latitude = data.latitude;
+        window.user.Vote.Longitude = data.longitude;
+        window.user.IP = data.ip;
+        window.user.country_code = data.country_code;
+        window.user.country = data.country_name;
+        dfdIP.resolve();
+      }
+
+      if (isIe9) {
+         $.ajax({
+            url: config.getIpAddress, // + '?callback=funcCallback&v=2&alt=jsonc',
+            success: funcCallback,
+            error: funcCallback,
+            callback: 'funcCallback',
+            dataType: 'jsonp'
+        });
+      } else {
+        $.getJSON( config.getIpAddress, funcCallback);
+        // $.jsonp({
+        //   url: config.getIpAddress,
+        //   callback: 'funcCallback',
+        //   success: funcCallback
+        // });
+      }
+
+      return dfdIP.promise();
+    },
+
+    createUUID: function () {
+      var s = [];
+      var hexDigits = "0123456789abcdef";
+      for (var i = 0; i < 36; i++) {
+          s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+      }
+      s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+      s[8] = s[13] = s[18] = s[23] = "-";
+
+      var uuid = s.join("");
+      return uuid;
+    },
+
+    save: function(attributes, options) {
+      options = _.defaults((options || {}), {url: config.services.getProfile, type: 'post', contentType: 'application/json'});
+      options.data = JSON.stringify(this.attributes);
+      options.error = function(e){
+        console.log("Error callback", e);
+      }
+      return Backbone.Model.prototype.save.call(this, attributes, options);
+    },
+
+    vote: function(attributes, options) {
+      options = _.defaults((options || {}), {url: config.services.postVote, type: 'post', contentType: 'application/json'});
+      options.data = JSON.stringify(this.attributes);
+
+      return Backbone.Model.prototype.save.call(this, attributes, options);
+    },
+
+    votesSummary: function(attributes, options) {
+      options = _.defaults((options || {}), {url: config.services.getVotesSummary, type: 'post', contentType: 'application/json'});
+      return Backbone.Model.prototype.save.call(this, attributes, options);
+    },
+
+    contentView: function(attributes, options) {
+      options = _.defaults((options || {}), {url: config.services.contentView, type: 'post', contentType: 'application/json'});
+      return Backbone.Model.prototype.save.call(this, attributes, options);
+    },
+
+    contentView: function(attributes, options) {
+      options = _.defaults((options || {}), {url: config.services.contentView, type: 'post', contentType: 'application/json'});
+      return Backbone.Model.prototype.save.call(this, attributes, options);
+    },
+
+    parse : function (response) {
+     return response;
+    }
+
+  });
+
+  return UserModel;
+});

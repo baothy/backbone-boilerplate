@@ -1,0 +1,86 @@
+/****** IMAGES DIRECTORY *********************/
+
+@assets-url: "../imgs/assets/";
+
+/****** Font ************************/
+
+@font-face {
+    font-family: 'ArialBlack';
+    src: url('../fonts/608.eot');
+    src: url('../fonts/608.eot') format('embedded-opentype'),
+         url('../fonts/608.woff') format('woff'),
+         url('../fonts/608.ttf') format('truetype'),
+         url('../fonts/608.svg#BradyBunchRemasteredRegular') format('svg');
+}
+
+
+/****** Variables ************************/
+
+/* Color */
+
+@blue: #142932;
+@mid-blue: #295264;
+@red: #bd2f28;
+@offwhite: #ffebd5;
+@yellow: #e4ca7d;
+@green: #647759;
+@white: #fff;
+@border-popup: #fde3a9;
+@bg-popup: #fff2d5;
+
+/* Font size */
+
+@bigTittle : 6rem;
+@tittle : 3.5rem;
+@strong: 2.4rem;
+@medium: 3rem;
+@banner: 4rem;
+@base: 2rem;
+@paragraph: 2.4rem;
+@nav: 2rem;
+@small: 1.6rem;
+@popup: 1.5rem;
+
+/* Size */
+
+@btnWidth: 30.8rem;
+@btnHeight: 5rem;
+
+/****** Mixins *********************/
+
+/* Font */
+
+.font-title {
+  font-family: 'arial', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.font-current {
+  font-family: 'arial', sans-serif;
+  letter-spacing: .1rem;
+}
+
+.btn-shadow {
+  background: -webkit-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: -ms-linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: -moz-linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background-size: 4px 4px;
+  opacity: .7;
+}
+
+/* Transform */
+
+.transform(@trans) {
+  -webkit-transform: @trans;
+  -moz-transform: @trans;
+  -ms-transform: @trans;
+  transform: @trans;
+}
+
+
+/* INPUT */
+input[type="text"], input[type="password"] {
+  padding-left: 5px;
+}

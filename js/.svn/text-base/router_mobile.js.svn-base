@@ -1,0 +1,243 @@
+// Filename: router.js
+define([
+  'backbone',
+  'views/container/containerView_mobile',
+  'views/container/containerView',
+  'views/footer/FooterView',
+  'views/header/HeaderView',
+  'views/subviews/signupView',
+  'views/subviews/loginView',
+  'views/subviews/signupConfirmView',
+  'views/subviews/pwdForgotView',
+  'views/subviews/emailSentView',
+  'views/subviews/notConnectedView',
+  'views/subviews/validateEmailView',
+  'views/container/creditsView',
+  'views/subviews/unsubscribeView',
+  'views/webGames/quizView',
+  'views/webGames/surveyView',
+  'views/webGames/voteView',
+  'models/login/loginModel',
+  'utils'
+], function(Backbone, ContainerViewMobile, ContainerView, FooterView, HeaderView, SignupView, LoginView, SignupConfirmView, PwdForgotView, EmailSentView, NotConnectedView, ValidateEmailView, CreditsView, UnsubscribeView, QuizView, SurveyView, VoteView, LoginModel, utils) {
+
+  var AppRouter = Backbone.Router.extend({
+    routes: {
+      // Define some URL routes
+      'homeMobile': 'defaultAction',
+      'home': 'homedesktop',
+      'header': 'header',
+      'signup': 'signup',
+      'login': 'login',
+      'editProfile': 'editProfile',
+      'signup-confirm?key=:validateKey': 'signup-confirm',
+      'unsubscribe?email=:email': 'unsubscribe',
+      'pwdForgot': 'pwdForgot',
+      'emailSent': 'emailSent',
+      'notConnected': 'notConnected',
+      'validateEmail': 'validateEmail',
+      'credits': 'credits',
+      'quiz': 'quiz',
+      'survey': 'survey',
+      'vote': 'vote',
+
+      // Default
+      '*actions': 'defaultAction'
+    }
+  });
+
+  var initialize = function(){
+    var isDefaultPageViewed = false;
+
+    // new HeaderView().render();
+
+    window.app_router = new AppRouter();
+
+    app_router.on('route:defaultAction', function (actions) {
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+      // app_router.navigate('login', true);
+
+      if (utils.header.isSessionAlived()) {
+        var view = new ContainerViewMobile();
+        window.previousView = view;
+        view.render();
+
+        isDefaultPageViewed = true;
+      } else {
+        app_router.navigate('login', true);
+      }
+    });
+
+    app_router.on('route:signup', function (actions) {
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+      var view = new SignupView({isNew: true});
+      window.previousView = view;
+      view.render();
+    });
+
+    app_router.on('route:homedesktop', function (actions) {
+      $.cookie('subitoMobile', '0', {expires: 30});
+      // window.navigate(document.location.href.substring(0, document.location.href.indexOf('#')) + '#home');
+      document.location.href = document.location.href.substring(0, document.location.href.indexOf('#')) + '#home';
+      location.reload();
+    });
+
+    app_router.on('route:login', function (actions) {
+      $('body').removeClass('containerDesktop');
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+
+      if (utils.header.isSessionAlived()) {
+        app_router.navigate('/', true);
+      } else {
+        var view = new LoginView({isNew: true});
+        window.previousView = view;
+        view.render();
+      }
+    });
+
+    app_router.on('route:editProfile', function (actions) {
+      if (isDefaultPageViewed) {
+        if (window.previousView && window.previousView.clean) window.previousView.clean();
+        var view = new SignupView({isNew: false});
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    app_router.on('route:quiz', function (actions) {
+
+      if (isDefaultPageViewed) {
+        if (window.previousView && window.previousView.clean) window.previousView.clean();
+        var view = new QuizView({isNew: false});
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    app_router.on('route:survey', function (actions) {
+
+      if (isDefaultPageViewed) {
+        if (window.previousView && window.previousView.clean) window.previousView.clean();
+        var view = new SurveyView({isNew: false});
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    app_router.on('route:vote', function (actions) {
+
+      if (isDefaultPageViewed) {
+        if (window.previousView && window.previousView.clean) window.previousView.clean();
+        var view = new VoteView({isNew: false});
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    app_router.on('route:validateEmail', function (actions) {
+      var view = new ValidateEmailView();
+      window.previousView = view;
+      view.render();
+    });
+
+    app_router.on('route:unsubscribe', function (email) {
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+      new ContainerView().render();
+
+      var view = new UnsubscribeView({email: email});
+      window.previousView = view;
+      view.render();
+    });
+
+    app_router.on('route:signup-confirm', function (validateKey) {
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+      isDefaultPageViewed = true;
+      new ContainerView().render();
+
+      var loginModel = new LoginModel(),
+          that       = this;
+
+      loginModel.set('validationKey', validateKey);
+      loginModel.validateEmail(null, {success: $.proxy(success, that), error: $.proxy(error, that)});
+
+      function success (model, response) {
+        if (response.Result.ErrorCode === '0x701018') {
+          console.log(response.Result.Message);
+          alert(response.Result.Message);
+          app_router.navigate('/');
+        } else if (response.Result.ErrorCode === '0x701017') {
+          console.log(response.Result.Message);
+          alert(response.Result.Message);
+          app_router.navigate('/');
+        } else {
+          var view = new SignupConfirmView({validateKey: validateKey});
+          window.previousView = view;
+          view.render();
+          window.user = response.User;
+          utils.header.userLogged();
+          utils.header.setLoginCookie(false);
+        }
+      }
+
+          // var view = new SignupConfirmView({validateKey: validateKey});
+          // window.previousView = view;
+          // view.render();
+
+
+      function error (model, response) {
+
+      }
+
+    });
+
+    app_router.on('route:pwdForgot', function (actions) {
+      if (window.previousView && window.previousView.clean) window.previousView.clean();
+      var view = new PwdForgotView();
+      window.previousView = view;
+      view.render();
+    });
+
+    app_router.on('route:emailSent', function (actions) {
+      var view = new EmailSentView();
+      window.previousView = view;
+      view.render();
+    });
+
+    app_router.on('route:notConnected', function (actions) {
+      if (isDefaultPageViewed) {
+        var view = new NotConnectedView();
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    app_router.on('route:credits', function (actions) {
+      if (isDefaultPageViewed) {
+        var view = new CreditsView();
+        window.previousView = view;
+        view.render();
+      } else {
+        app_router.navigate('/', true);
+      }
+    });
+
+    // new FooterView().render();
+
+    Backbone.history.start();
+  };
+
+  return {
+    initialize: initialize
+  };
+
+});

@@ -1,0 +1,175 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+*:focus, *:active {
+  outline: none;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-font-smoothing:antialiased;
+    -moz-font-smoothing: auto;
+    font-family: Arial;
+     // -moz-font-smoothing: auto |
+    // -webkit-backface-visibility: hidden;
+    // -webkit-transform:translate3d(0,0,0);
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font-family: BradBunR;
+    // min-height: 1000px;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+b {
+  font-weight: bold;
+}
+
+/* =============================================================================
+   Primary styles
+   Author:
+   ========================================================================== */
+
+/* CSS reset */
+
+body, div, span, ul, li, h1, h2, h3, h4, h5, h6, input, p, menu, nav, popup, overlay, hr, article, aside, details, figcaption, figure, footer, header, hgroup, nav, section{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, menu {
+  margin: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+
+section:not(.selected) {
+  width: 100%;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type="text"], input[type="password"] {
+  -webkit-appearance: none;
+}
+
+/* Styles généraux */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #000;
+  .font-current;
+  color: #000;
+  font-size: @base;
+  text-align: center;
+  background: url('../imgs/assets/obliques.png') -400px 0 no-repeat, url('../imgs/assets/bg_repeat.jpg') 0 127px repeat;
+}
+
+
+body > footer {
+  position: relative;
+  top: -20px;
+}
+
+.rectangle_orange:hover, .rectangle_orange:active {
+  background-color: darken(#f06319, 10%) !important;
+}
+
+.rectangle_green:hover, .rectangle_green:active, .go:hover, .go:active {
+  background-color: darken(#6ebd2e, 10%) !important;
+}
+
+.signup-btn:hover, .rectangle_purple:hover, .rectangle_purple:active {
+  background-color: darken(#6225b0, 10%) !important;
+}
+
+input {
+  color: #000;
+}
+
+.outer-container {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* All Smartphones in portrait and landscape ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  body {
+    width: 970px !important;
+  }
+
+  .header-login {
+    width: 970px !important;
+  }
+}
+
+
+/* IPAD */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {
+  .webgame-marker #tqFooterBar {
+    top: 480px !important;
+  }
+
+  .webgame-marker footer.main {
+    top: 610px !important;
+  }
+
+  .vote, .survey, .quiz {
+    overflow: auto !important;
+  }
+}

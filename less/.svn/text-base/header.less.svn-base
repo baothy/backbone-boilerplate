@@ -1,0 +1,740 @@
+header.main {
+  background-image: url('../imgs/assets/bg-header.jpg');
+  background-repeat: repeat;
+  background-size: 21px 39px;
+  width: 100%;
+  height: 126px;
+  border-bottom: 4px solid #000;
+  color: #fff;
+  z-index: 10;
+
+  span {
+    color: #fff;
+  }
+
+  .header {
+    background-image: url('../imgs/assets/header-skwat.png');
+    background-repeat: no-repeat;
+    width: 971px;
+    height: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    .logo-link {
+      position: absolute;
+      top: 0px;
+      left: 107px;
+      height: 37px;
+      width: 219px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .header-login {
+    background-image: url('../imgs/assets/bg-header-login.png');
+    background-repeat: repeat;
+    background-size: 13px 84px;
+    width: 100%;
+    height: 87px;
+    border-bottom: 4px solid #000;
+    margin-top: 4px;
+
+    .inner-header-login {
+      width: 971px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 100%;
+
+      &.loginEl {
+        top: -83px;
+        left: 287px;
+        position: relative;
+        width: 300px;
+      }
+
+      ul {
+        height: 100%;
+        font-size: 11px;
+
+        li {
+          float: left;
+          position: relative;
+          color: #9dd1ce;
+          span {
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 142px;
+            position: relative;
+            z-index: 10;
+            font-family: arial black;
+          }
+
+        }
+
+        a.forgotpwd {
+          color: #9dd1ce;
+          text-decoration: underline;
+          margin-left: 10px;
+          letter-spacing: 0px;
+          position: relative;
+          top: -2px;
+          font-size: 12px;
+        }
+
+        .logo {
+          background-image: url('../imgs/assets/logo.png');
+          background-repeat: no-repeat;
+          background-size: 81px 67px;
+          background-position: 11px 8px;
+          width: 245px;
+          height: 100%;
+          border-right: 1px solid #000;
+          i{
+            color: #9dd1ce;
+            font-style: italic;
+          }
+          span {
+            text-transform: uppercase;
+            font-size: 12px;
+
+          }
+          .diffusion1 {
+            color: #9dd1ce;
+            left: 110px;
+            position: relative;
+            top: 8px;
+            width: 134px;
+            font-size: 12px;
+            line-height: 13px;
+            letter-spacing: 1px;
+            text-align: left;
+
+            span {
+              text-transform: inherit;
+              text-shadow: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              line-height: inherit;
+              position: inherit;
+              z-index: inherit;
+              font-family: inherit;
+              color: inherit;
+              width: 200px;
+            }
+          }
+
+          .diffusion2 {
+            color: #9dd1ce;
+            left: 110px;
+            position: relative;
+            top: 18px;
+            width: 134px;
+            font-size: 12px;
+            line-height: 13px;
+            letter-spacing: 1px;
+            text-align: left;
+
+            span {
+              text-transform: inherit;
+              text-shadow: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              line-height: inherit;
+              position: inherit;
+              z-index: inherit;
+              font-family: inherit;
+              color: inherit;
+              width: 200px;
+            }
+          }
+
+          .logo-click {
+            position: absolute;
+            height: 56px;
+            width: 80px;
+            top: 10px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .accueil {
+          .img-background('maison.png', 39px, 39px);
+          background-position: 43px 18px;
+          width: 125px;
+          height: 100%;
+          border-right: 1px solid #000;
+          display: none;
+
+          &:hover, &.selected {
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              background-image: url('../imgs/assets/maison.png'), url('../imgs/assets/bg-header-login-selected.png');
+              background-repeat: no-repeat;
+              background-size: 39px 39px, 124px 99px;
+              background-position: 43px 23px, 0px 4px;
+              width: 125px;
+              height: 105px;
+              position: absolute;
+              top: -5px;
+              left: 0;
+            }
+          }
+        }
+
+        .personnage {
+          background-image: url('../imgs/assets/perso.png');
+          background-repeat: no-repeat;
+          background-size: 53px 40px;
+          background-position: 35px 17px;
+          width: 125px;
+          height: 100%;
+          border-right: 1px solid #000;
+
+          &:hover, &.selected {
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              background-image: url('../imgs/assets/perso.png'), url('../imgs/assets/bg-header-login-selected.png');
+              background-repeat: no-repeat;
+              background-size: 53px 40px, 124px 99px;
+              background-position: 35px 22px, 0px 4px;
+              width: 125px;
+              height: 105px;
+              position: absolute;
+              top: -5px;
+              left: 0;
+            }
+          }
+        }
+
+        .episodes {
+          .img-background('tv.png', 50px, 45px);
+          background-position: 36px 11px;
+          width: 124px;
+          height: 100%;
+          border-right: 1px solid #000;
+          &:hover, &.selected {
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-selected.png');
+              background-repeat: no-repeat;
+              background-size: 50px 45px, 123px 99px;
+              background-position: 36px 16px, 0px 4px;
+              width: 125px;
+              height: 105px;
+              position: absolute;
+              top: -5px;
+              left: 0;
+            }
+          }
+        }
+
+        .quiz {
+          .img-background('tv.png', 50px, 45px);
+          background-position: 36px 11px;
+          width: 124px;
+          height: 100%;
+          left: 0;
+          top: 0;
+          border-right: 1px solid #000;
+          &:hover, &.selected {
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-selected.png');
+              background-repeat: no-repeat;
+              background-size: 50px 45px, 123px 99px;
+              background-position: 36px 16px, 0px 4px;
+              width: 125px;
+              height: 105px;
+              position: absolute;
+              top: -5px;
+              left: 0;
+            }
+          }
+        }
+
+
+        input[type="checkbox"] {
+          margin-right: 3px;
+
+        }
+
+        span {
+          &.rememberMe {
+            text-transform: none !important;
+            text-shadow: 0px 0px 0px #000 !important;
+            font-size: 12px !important;
+            font-weight: normal !important;
+            line-height: 10px !important;
+            position: relative !important;
+            z-index: 10 !important;
+            font-family: arial !important;
+            color: #9dd1ce;
+            letter-spacing: 0px;
+            top: -2px;
+            left: -3px;
+            position: relative;
+          }
+        }
+
+        .logged {
+          margin-left: 20px;
+          text-align: left;
+          h1 {
+            font-family: BradBun;
+            color: #fff;
+            font-size: 19px;
+            text-shadow: 2px 2px 0px #000;
+          }
+          span {
+            font-family: BradBun;
+            line-height: 20px;
+          }
+
+          .username {
+            top: 20px;
+            margin-top: 20px;
+            display: block;
+          }
+        }
+
+        .login {
+          .loginError {
+            .img-background('warning.png', 25px, 22px);
+            background-image: url("../imgs/assets/warning.png");
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 22px;
+            position: absolute;
+            width: 180px;
+            height: 30px;
+            visibility: hidden;
+            color: #EB79BC;
+            top: -26px;
+            left: 138px;
+            text-align: left;
+
+            &.display {
+              visibility: visible;
+            }
+            span {
+              color: #EB79BC;
+              font-size: 10px;
+              left: 32px;
+              position: absolute;
+              text-shadow: none;
+              font-style: italic;
+              text-transform: none;
+              letter-spacing: 0px;
+              line-height: 10px;
+            }
+          }
+
+          ul {
+            margin-left: 20px;
+            margin-top: 2px;
+            li {
+              margin-top: 5px;
+
+              &.connecte-toi {
+                .img-background('connecte-toi.png', 130px, 18px);
+              }
+            }
+          }
+          width: 350px;
+          height: 100%;
+          input[type="text"], input[type="password"] {
+            width: 130px;
+            height: 23px;
+            border: 2px solid #000;
+            color: #000;
+            margin-right: 5px;
+          }
+
+          .go {
+            background-color: #6ebd2e;
+            color: #fff;
+            text-shadow: 2px 2px 0px #000;
+            border-radius: 5px;
+            height: 21px;
+            width: 34px;
+            text-align: center;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 21px;
+            border: 2px solid #000;
+            position: relative;
+            top: -29px;
+            left: 19px;
+          }
+        }
+
+        .logged {
+          margin-top: 10px;
+          .deconnexion {
+            text-decoration: underline;
+            color: #fff;
+            display: block;
+          }
+
+          .userName {
+           display: block;
+           font-size: 24px;
+            line-height: 24px;
+            margin-top: 3px;
+            margin-bottom: 7px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-red {
+  header.main {
+    .header-login {
+      background-image: url('../imgs/assets/bg-header-login-red2.png');
+      background-size: 25px 85px;
+
+      .inner-header-login {
+        ul {
+          .accueil {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/maison.png'), url('../imgs/assets/bg-header-login-red2-selected.png');
+                background-repeat: no-repeat;
+                background-size: 39px 39px, 124px 100px;
+                background-position: 43px 23px, 0px 3px;
+                width: 125px;
+                height: 105px;
+                position: absolute;
+                top: -5px;
+                left: 0;
+              }
+            }
+          }
+
+          .personnage {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/perso.png'), url('../imgs/assets/bg-header-login-red2-selected.png');
+                background-repeat: no-repeat;
+                background-size: 53px 40px, 124px 100px;
+                background-position: 35px 22px, 0 3px;
+              }
+            }
+          }
+
+          .episodes {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-red2-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 100px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+
+          .quiz {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-red2-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 100px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-gray {
+  header.main {
+    .header-login {
+      background-image: url('../imgs/assets/bg-header-login-gray.png');
+      background-size: 12px 85px;
+      .inner-header-login {
+        ul {
+          .accueil {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/maison.png'), url('../imgs/assets/bg-header-login-gray-selected.png');
+                background-repeat: no-repeat;
+                background-size: 39px 39px, 124px 101px;
+                background-position: 43px 23px, 0px 3px;
+                width: 125px;
+                height: 105px;
+                position: absolute;
+                top: -5px;
+                left: 0;
+              }
+            }
+          }
+
+          .personnage {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/perso.png'), url('../imgs/assets/bg-header-login-gray-selected.png');
+                background-repeat: no-repeat;
+                background-size: 53px 40px, 124px 101px;
+                background-position: 35px 22px, 0 3px;
+              }
+            }
+          }
+
+          .episodes {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-gray-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+
+          .quiz {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-gray-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.custom-green {
+  header.main {
+    .header-login {
+      background-image: url('../imgs/assets/bg-header-login-green.png');
+      background-size: 47px 85px;
+      .inner-header-login {
+        ul {
+          .accueil {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/maison.png'), url('../imgs/assets/bg-header-login-green-selected.png');
+                background-repeat: no-repeat;
+                background-size: 39px 39px, 124px 101px;
+                background-position: 43px 23px, 0px 3px;
+                width: 125px;
+                height: 105px;
+                position: absolute;
+                top: -5px;
+                left: 0;
+              }
+            }
+          }
+
+          .personnage {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/perso.png'), url('../imgs/assets/bg-header-login-green-selected.png');
+                background-repeat: no-repeat;
+                background-size: 53px 40px, 124px 101px;
+                background-position: 35px 22px, 0 3px;
+              }
+            }
+          }
+
+          .episodes {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-green-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+
+          .quiz {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-green-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.custom-dark-blue {
+  header.main {
+    .header-login {
+      background-image: url('../imgs/assets/bg-header-login-dark-blue.png');
+      background-size: 35px 35px;
+      .inner-header-login {
+        ul {
+          .accueil {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/maison.png'), url('../imgs/assets/bg-header-login-dark-blue-selected.png');
+                background-repeat: no-repeat;
+                background-size: 39px 39px, 124px 101px;
+                background-position: 43px 23px, 0px 3px;
+                width: 125px;
+                height: 105px;
+                position: absolute;
+                top: -5px;
+                left: 0;
+              }
+            }
+          }
+
+          .personnage {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/perso.png'), url('../imgs/assets/bg-header-login-dark-blue-selected.png');
+                background-repeat: no-repeat;
+                background-size: 53px 40px, 124px 101px;
+                background-position: 35px 22px, 0 3px;
+              }
+            }
+          }
+
+          .episodes {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-dark-blue-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+
+          .quiz {
+            &:hover, &.selected {
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                background-image: url('../imgs/assets/tv.png'), url('../imgs/assets/bg-header-login-dark-blue-selected.png');
+                background-repeat: no-repeat, repeat;
+                background-size: 50px 45px, 122px 101px;
+                background-position: 36px 16px, 0 3px;
+                width: 123px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-gray {
+  .diffusion1, .diffusion2, .deconnexion, .bt-close {
+    color: #000 !important;
+    i {
+      color: #000 !important;
+    }
+  }
+}
+
+.intro, .title-name, .title-pwd {
+  display: none;
+  position: relative;
+}
+
+.options {
+  top: 0px;
+  position: relative;
+}
+
+.options ~ .signup {
+  display: none;
+}
+

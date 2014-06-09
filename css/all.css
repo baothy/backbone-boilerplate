@@ -1,0 +1,330 @@
+/****** IMAGES DIRECTORY *********************/
+/****** Font ************************/
+@font-face {
+  font-family: 'ArialBlack';
+  src: url('../fonts/608.eot');
+  src: url('../fonts/608.eot') format('embedded-opentype'), url('../fonts/608.woff') format('woff'), url('../fonts/608.ttf') format('truetype'), url('../fonts/608.svg#BradyBunchRemasteredRegular') format('svg');
+}
+/****** Variables ************************/
+/* Color */
+/* Font size */
+/* Size */
+/****** Mixins *********************/
+/* Font */
+.font-title {
+  font-family: 'arial', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+.font-current {
+  font-family: 'arial', sans-serif;
+  letter-spacing: .1rem;
+}
+.btn-shadow {
+  background: -webkit-gradient(-45deg, #000000 25%, transparent 0, transparent 50%, #000000 0, #000000 75%, transparent 0);
+  background: -ms-linear-gradient(-45deg, #000000 25%, transparent 0, transparent 50%, #000000 0, #000000 75%, transparent 0);
+  background: -moz-linear-gradient(-45deg, #000000 25%, transparent 0, transparent 50%, #000000 0, #000000 75%, transparent 0);
+  background: linear-gradient(-45deg, #000000 25%, transparent 0, transparent 50%, #000000 0, #000000 75%, transparent 0);
+  background-size: 4px 4px;
+  opacity: .7;
+}
+/* Transform */
+/* INPUT */
+input[type="text"],
+input[type="password"] {
+  padding-left: 5px;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+*:focus,
+*:active {
+  outline: none;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: auto;
+  font-family: Arial;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: BradBunR;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+b {
+  font-weight: bold;
+}
+/* =============================================================================
+   Primary styles
+   Author:
+   ========================================================================== */
+/* CSS reset */
+body,
+div,
+span,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+p,
+menu,
+nav,
+popup,
+overlay,
+hr,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+menu {
+  margin: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+section:not(.selected) {
+  width: 100%;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+input[type="text"],
+input[type="password"] {
+  -webkit-appearance: none;
+}
+/* Styles généraux */
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: #000;
+  font-family: 'arial', sans-serif;
+  letter-spacing: .1rem;
+  color: #000;
+  font-size: 2rem;
+  text-align: center;
+  background: url('../imgs/assets/obliques.png') -400px 0 no-repeat, url('../imgs/assets/bg_repeat.jpg') 0 127px repeat;
+}
+body > footer {
+  position: relative;
+  top: -20px;
+}
+.rectangle_orange:hover,
+.rectangle_orange:active {
+  background-color: #c94e0d !important;
+}
+.rectangle_green:hover,
+.rectangle_green:active,
+.go:hover,
+.go:active {
+  background-color: #569424 !important;
+}
+.signup-btn:hover,
+.rectangle_purple:hover,
+.rectangle_purple:active {
+  background-color: #4b1c86 !important;
+}
+input {
+  color: #000;
+}
+.outer-container {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+/* All Smartphones in portrait and landscape ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  body {
+    width: 970px !important;
+  }
+  .header-login {
+    width: 970px !important;
+  }
+}
+/* IPAD */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: landscape) {
+  .webgame-marker #tqFooterBar {
+    top: 480px !important;
+  }
+  .webgame-marker footer.main {
+    top: 610px !important;
+  }
+  .vote,
+  .survey,
+  .quiz {
+    overflow: auto !important;
+  }
+}

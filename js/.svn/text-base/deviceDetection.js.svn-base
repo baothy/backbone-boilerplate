@@ -1,0 +1,148 @@
+//Detect if the browser is a mobile browser or a desktop browser and conditionally include your JavaScript -->
+
+// Mobile/Desktop Detection script
+(function(ua, w, d, undefined) {
+
+    console.log('ua', ua);
+    // App Environment
+    // ---------------
+    //  Tip: Set to true to turn on "production" mode
+    var production = false,
+            filesToLoad,
+    //BoilerplateMVC Helper Methods
+            boilerplateMVC = {
+                loadCSS: function(url, callback) {
+                    var link = d.createElement("link");
+                    link.type = "text/css";
+                    link.rel = "stylesheet";
+                    link.href = url;
+                    d.getElementsByTagName("head")[0].appendChild(link);
+                    if(callback) {
+                        callback();
+                    }
+                },
+                loadJS: function(file, callback) {
+                    var script = d.createElement("script");
+                    script.type = "text/javascript";
+                    if (script.readyState) {  // IE
+                        script.onreadystatechange = function() {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                callback();
+                            }
+                        };
+                    } else {  // Other Browsers
+                        script.onload = function() {
+                            callback();
+                        };
+                    }
+                    if(((typeof file).toLowerCase()) === "object" && file["data-main"] !== undefined) {
+                        script.setAttribute("data-main", file["data-main"]);
+                        script.async = true;
+                        script.src = file.src;
+                    } else {
+                        script.src = file;
+                    }
+                    d.getElementsByTagName("head")[0].appendChild(script);
+                },
+                loadFiles: function(production, obj, callback) {
+                    var self = this;
+                    if(production) {
+                        // Loads the production CSS file(s)
+                        self.loadCSS(obj["prod-css"], function() {
+                            // If there are production JavaScript files to load
+                            if(obj["prod-js"]) {
+                                // Loads the correct initialization file (which includes Almond.js)
+                                self.loadJS(obj["prod-js"], callback);
+                            }
+                        });
+                    } else {
+                        // Loads the development CSS file(s)
+                        self.loadCSS(obj["dev-css2"]);
+
+                        self.loadCSS(obj["dev-css"], function() {
+                            // If there are development Javascript files to load
+                            if(obj["dev-js"]) {
+                                // Loads Require.js and tells Require.js to find the correct intialization file
+                                self.loadJS(obj["dev-js"], callback);
+                            }
+                        });
+                    }
+                }
+            };
+
+    // Mobile/Tablet Logic
+    // if(((document.URL.indexOf('#webGames') !== -1) || (getCookie('subitoMobile') === '1' )) && (/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(ua)) {
+    if(((document.URL.indexOf('#webGames') !== -1) || (getCookie('subitoMobile') === '1' )) && (/iPhone|iPod|Android|BlackBerry|Opera Mini|IEMobile/).test(ua)) {
+
+        window.isMobileDevice = true;
+        setCookie('subitoMobile', '1');
+
+        // Mobile/Tablet CSS and JavaScript files to load
+        filesToLoad = {
+            // CSS file that is loaded when in development mode
+            "dev-css": "css_mobile/all.css",
+            // CSS file that is loaded when in production mode
+            "prod-css": "css_mobile/all.min.css",
+            // Require.js configuration file that is loaded when in development mode
+            "dev-js": { "data-main": "js/main_mobile.js", "src": "js/libs/require/require.js" },
+            // JavaScript initialization file that is also loaded when in development mode
+            // "dev-init": "js/app/init/MobileInit.js",
+            // JavaScript file that is loaded when in production mode
+            // "prod-init": "js/app/init/MobileInit.min.js",
+            "prod-js": { "data-main": "js/main_mobile.js", "src": "js/libs/require/require.js" }
+        };
+    }
+
+    // Desktop Logic
+    else {
+
+        window.isMobileDevice = false;
+        // Desktop CSS and JavaScript files to load
+        filesToLoad = {
+            // CSS file that is loaded when in development mode
+            "dev-css": "css/all.css",
+            "dev-css2": "css/browser_target.css",
+            // CSS file that is loaded when in production mode
+            "prod-css": "css/all.min.css",
+            // Require.js configuration file that is also loaded when in development mode
+            "dev-js": { "data-main": "js/main.js", "src": "js/libs/require/require.js" },
+            // JavaScript initialization file that is loaded when in development mode
+            "dev-init": "js/plugins/offline/offline.min.js",
+            // JavaScript file that is loaded when in production mode
+            "prod-init": "js/plugins/offline/offline.min.js",
+            "prod-js": { "data-main": "js/main.js", "src": "js/libs/require/require.js" }
+        };
+
+    }
+
+    boilerplateMVC.loadFiles(production, filesToLoad, function() {
+        if(!production && window.require) {
+            require([filesToLoad["dev-init"]]);
+        } else if ( production ) {
+            require([filesToLoad["prod-init"]]);
+        }
+    });
+
+    function setCookie(cookieName, cookieValue) {
+     var today = new Date(),
+         expire = new Date(),
+         nDays = 30;
+
+     expire.setTime(today.getTime() + 3600000*24*nDays);
+     document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString();
+    }
+
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+          {
+          var c = ca[i].trim();
+          if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+})(navigator.userAgent || navigator.vendor || window.opera, window, document);

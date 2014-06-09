@@ -1,0 +1,155 @@
+/****** IMAGES DIRECTORY *********************/
+
+@assets-url: "../imgs/assets/";
+
+/****** Font ************************/
+
+// @font-face {
+//     font-family: 'BradBunR';
+//     src: url('../fonts/BradBunR.eot');
+//     src: url('../fonts/BradBunR.eot?#iefix') format('embedded-opentype'),
+//          url('../fonts/BradBunR.woff') format('woff'),
+//          url('../fonts/BradBunR.ttf') format('truetype'),
+//          url('../fonts/BradBunR.svg') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+@font-face {
+    font-family: 'BradBun';
+    src: url('../fonts/bradbunr.eot');
+    src: url('../fonts/bradbunr.eot') format('embedded-opentype'),
+         url('../fonts/bradbunr.woff') format('woff'),
+         url('../fonts/bradbunr.ttf') format('truetype'),
+         url('../fonts/bradbunr.svg#BradyBunchRemasteredRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'ArialBlack';
+    src: url('../fonts/608.eot');
+    src: url('../fonts/608.eot') format('embedded-opentype'),
+         url('../fonts/608.woff') format('woff'),
+         url('../fonts/608.ttf') format('truetype'),
+         url('../fonts/608.svg#BradyBunchRemasteredRegular') format('svg');
+}
+
+
+/****** Variables ************************/
+
+/* Color */
+
+@blue: #142932;
+@mid-blue: #295264;
+@red: #bd2f28;
+@offwhite: #ffebd5;
+@yellow: #e4ca7d;
+@green: #647759;
+@white: #fff;
+@border-popup: #fde3a9;
+@bg-popup: #fff2d5;
+
+/* Font size */
+
+@bigTittle : 6rem;
+@tittle : 3.5rem;
+@strong: 2.4rem;
+@medium: 3rem;
+@banner: 4rem;
+@base: 2rem;
+@paragraph: 2.4rem;
+@nav: 2rem;
+@small: 1.6rem;
+@popup: 1.5rem;
+
+/* Size */
+
+@btnWidth: 30.8rem;
+@btnHeight: 5rem;
+
+/****** Mixins *********************/
+
+.sprite-background(@background-position: 0 0, @width: 10rem, @height: 10rem) {
+  background-image: url("@{assets-url}sprite.png");
+  background-repeat: no-repeat;
+  background-position: @background-position;
+  width: @width;
+  height: @height;
+  display: block;
+}
+
+.img-background(@img: 'connecte-toi.png', @width: 10rem, @height: 10rem) {
+  background-image: url("@{assets-url}@{img}");
+  background-repeat: no-repeat;
+  width: @width;
+  height: @height;
+}
+
+.sprite-thumbnail(@background-position: 0 0){
+  background-image: url("@{assets-url}sprite-thumbnail.png");
+  background-size: 904px 1570px;
+  background-repeat: no-repeat;
+  background-position: @background-position;
+  display: block;
+}
+
+.reset-button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.text-shadow {
+  text-shadow: .1rem .1rem 0 #000;
+}
+
+.border-radius(@radius: .5rem) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.bg-discovery {
+  background-image: linear-gradient(bottom, rgb(61,61,61) 0%, rgb(33,33,33) 50%, rgb(48,48,48) 50%, rgb(1,1,1) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(61,61,61) 0%, rgb(33,33,33) 50%, rgb(48,48,48) 50%, rgb(1,1,1) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(61,61,61) 0%, rgb(33,33,33) 50%, rgb(48,48,48) 50%, rgb(1,1,1) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(61,61,61) 0%, rgb(33,33,33) 50%, rgb(48,48,48) 50%, rgb(1,1,1) 100%);
+  background-image: -ms-linear-gradient(bottom, rgb(61,61,61) 0%, rgb(33,33,33) 50%, rgb(48,48,48) 50%, rgb(1,1,1) 100%);
+}
+
+
+
+/* Font */
+
+.font-title {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.font-current {
+  font-family: 'Pontano Sans', sans-serif;
+  letter-spacing: .1rem;
+}
+
+.btn-shadow {
+  background: -webkit-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: -ms-linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: -moz-linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background: linear-gradient(-45deg, #000 25%, transparent 0, transparent 50%, #000 0, #000 75%, transparent 0);
+  background-size: 4px 4px;
+  opacity: .7;
+}
+
+/* Transform */
+
+.transform(@trans) {
+  -webkit-transform: @trans;
+  -moz-transform: @trans;
+  -ms-transform: @trans;
+  transform: @trans;
+}
+
+
+/* INPUT */
+input[type="text"], input[type="password"] {
+  padding-left: 5px;
+}

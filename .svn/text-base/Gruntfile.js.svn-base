@@ -1,0 +1,176 @@
+module.exports = function(grunt) {
+
+  var buildVersion = grunt.option("build") || '';
+  console.log('grunt.option("build")', grunt.option("build"));
+
+	grunt.initConfig({
+    sprite:{
+      all: {
+        src: 'path/to/your/sprites/*.png',
+        destImg: 'destination/of/spritesheet.png',
+        destCSS: 'destination/of/sprites.css'
+      }
+    },
+		less: {
+			production: {
+				files: [{
+                    expand: true,        // Enable dynamic expansion.
+                    cwd: 'less',  // Src matches are relative to this path.
+                    src: ['all.less'],     // Actual pattern(s) to match.
+                    dest: 'css',  // Destination path prefix.
+                    ext: '.css'         // Dest filepaths will have this extension.
+                },{
+                    expand: true,        // Enable dynamic expansion.
+                    cwd: 'less_mobile',  // Src matches are relative to this path.
+                    src: ['all.less'],     // Actual pattern(s) to match.
+                    dest: 'css_mobile',  // Destination path prefix.
+                    ext: '.css'         // Dest filepaths will have this extension.
+                }]
+      },
+      build: {
+          files: [{
+                    expand: true,        // Enable dynamic expansion.
+                    cwd: 'less',  // Src matches are relative to this path.
+                    src: ['all.less'],     // Actual pattern(s) to match.
+                    dest: 'css',  // Destination path prefix.
+                    ext: '.css'         // Dest filepaths will have this extension.
+                },{
+                    expand: true,        // Enable dynamic expansion.
+                    cwd: 'less_mobile',  // Src matches are relative to this path.
+                    src: ['all.less'],     // Actual pattern(s) to match.
+                    dest: 'css_mobile',  // Destination path prefix.
+                    ext: '.css'         // Dest filepaths will have this extension.
+                }]
+      }
+		},
+    svn: {
+     core: {
+       repository: 'http://sources.lvlstudio.local/svn/zone3/Subito.texto/SAISON_2/development/src/trunk/site',
+       dest: 'e:\\test\\subito'
+     }
+   },
+   clean: {
+    build: {
+      src: ["e:\\test\\subito\\"],
+      options: {
+        force: true
+      }
+    },
+    dest: {
+      src: ['<%= grunt.file.readJSON("package.json").destPath %>'],
+      options: {
+        force: true
+      }
+    },
+    deleteSvnFolder: {
+      src: ["e:\\test\\subito\\.svn", "e:\\test\\subito\\node_modules", "e:\\test\\subito\\Gruntfile.js", "e:\\test\\subito\\package.json"],
+      options: {
+        force: true
+      }
+    },
+    deleteUneccessaryFolders: {
+      src: ["<%= grunt.file.readJSON('package.json').destPath %>.svn", "<%= grunt.file.readJSON('package.json').destPath %>node_modules", "<%= grunt.file.readJSON('package.json').destPath %>Gruntfile.js", "<%= grunt.file.readJSON('package.json').destPath %>package.json", "<%= grunt.file.readJSON('package.json').destPath %>less", "<%= grunt.file.readJSON('package.json').destPath %>package"],
+      options: {
+        force: true
+      }
+    }
+   },
+   replace: {
+    replaceTextVersionBuild: {
+      src: ['index.html'],             // source files array (supports minimatch)
+      dest: 'index.html',             // destination directory or file
+      replacements: [{
+        from: '{VERSION}',                   // string replacement
+        to: '<%=grunt.option("build") %>'
+      }
+    ]},
+    replaceText: {
+      src: ['js/config/config_deploy.js'],             // source files array (supports minimatch)
+      dest: 'js/config/config.js',             // destination directory or file
+      replacements: [{
+        from: '{servicesBaseUrl}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.servicesBaseUrl %>'
+      },
+      {
+        from: '{serviceBaseUrlLogikmedia}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.serviceBaseUrlLogikmedia %>'
+      },
+      {
+        from: '{serviceBaseUrlTvQc}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.serviceBaseUrlTvQc %>'
+      },
+      {
+        from: '{baseUrl}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.baseUrl %>'
+      },
+      {
+        from: '{flashUrlBase}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").flashUrlBase %>'
+      }
+    ]},
+    replaceTextGameStandalone: {
+      src: ['gamestandalone/config/config_deploy.json'],             // source files array (supports minimatch)
+      dest: 'gamestandalone/config/config.json',             // destination directory or file
+      replacements: [{
+        from: '{baseUrl}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.baseUrl %>'
+      }]
+    },
+    replaceTextTutorial: {
+      src: ['tutorialstandalone/config/config_deploy.json'],             // source files array (supports minimatch)
+      dest: 'tutorialstandalone/config/config.json',             // destination directory or file
+      replacements: [{
+        from: '{baseUrl}',                   // string replacement
+        to: '<%= grunt.file.readJSON("package.json").service.baseUrl %>'
+      }]
+    }
+   },
+  copy: {
+    main: {
+      files: [
+        // includes files within path and its sub-directories
+        {expand: true, src: ['gamestandalone/**', 'tutorialstandalone/**', 'css_mobile/**', 'css/**', 'data/**', 'fonts/**', 'imgs/**', 'js/**', 'templates/**', 'videos/**', 'crossdomain.xml', 'index.html', 'web.config'], dest: '<%= grunt.file.readJSON("package.json").destPath %>'}
+      ]
+    }
+  },
+		watch: {
+			files: ['less/*', 'less_mobile/*'],
+			tasks: ['less']
+		}
+	});
+
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-global-config');
+  grunt.loadNpmTasks("grunt-package-environment");
+  grunt.loadNpmTasks('grunt-contrib-copy');
+
+	// Default task.
+	grunt.registerTask('default', ['watch']);
+  grunt.registerTask('setup-dev', ['clean:build', 'svn', 'clean:deleteSvnFolder',  'package:dev', 'replace:replaceText']);
+  grunt.registerTask('setup-tst', ['clean:build', 'svn', 'clean:deleteSvnFolder',  'package:tst', 'replace:replaceText']);
+  grunt.registerTask('setup-stg', ['clean:build', 'svn', 'clean:deleteSvnFolder', 'package:stg', 'replace:replaceText']);
+  grunt.registerTask('setup-dmclellan', ['clean:build', 'svn', 'clean:deleteSvnFolder', 'package:dmclellan', 'replace:replaceText']);
+
+  grunt.registerTask('build-dev', ['less', 'package:dev', 'replace', 'clean:dest', 'copy']);
+  grunt.registerTask('build-tst', ['less', 'package:tst', 'replace', 'clean:dest', 'copy']);
+  grunt.registerTask('build-stg', ['less', 'package:stg', 'replace', 'clean:dest', 'copy']);
+  grunt.registerTask('build-dmclellan', ['less', 'package:dmclellan', 'replace', 'clean:dest', 'copy']);
+
+  // Add an svn task for checking out repositories.
+  grunt.registerMultiTask('svn', 'Check out a Subversion repository.', function() {
+    var done = this.async();
+    var args = ['checkout', '--ignore-externals', this.data.repository];
+    if (this.data.dest) {
+      args.push(this.data.dest);
+    }
+    grunt.util.spawn({
+      cmd: 'svn',
+      args: args,
+      opts: {stdio: 'inherit'}
+    }, done);
+  });
+};

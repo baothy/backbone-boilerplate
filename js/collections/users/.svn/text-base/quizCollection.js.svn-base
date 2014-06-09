@@ -1,0 +1,26 @@
+define([
+  'backbone',
+  'config'
+  // 'models/ghosts/ghostModel'
+], function(Backbone, config){
+
+  var Collection = Backbone.Collection.extend({
+
+      // model: GhostModel,
+
+      initialize: function(models, options) {
+        // Assign the Deferred issued by fetch() as a property
+        this.userID = options.userID;
+        this.deferred = this.fetch();
+      },
+
+      url : function() {
+        // return config.services.getQuizz;
+        return config.services.getQuiz + this.userID;
+      }
+
+  });
+
+  return Collection;
+
+});

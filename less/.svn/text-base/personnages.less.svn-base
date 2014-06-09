@@ -1,0 +1,259 @@
+.personnages {
+
+  .arrow {
+    position: absolute;
+
+    .arrow-left, .arrow-right {
+      cursor: pointer;
+    }
+
+    .arrow-left {
+      .img-background('arrow-left-disable.png', 36px, 76px);
+      position: absolute;
+      left: 28px;
+      top: 467px;
+      z-index: 100;
+
+      &:hover {
+        background-image: url('../imgs/assets/arrow-left-hover.png');
+      }
+    }
+
+    .arrow-right {
+      .img-background('arrow-right.png', 36px, 76px);
+      position: absolute;
+      left: 892px;
+      top: 477px;
+      z-index: 100;
+
+      &:hover {
+        background-image: url('../imgs/assets/arrow-right-hover.png');
+      }
+    }
+
+  }
+
+  .rectangle-perso {
+    .img-background('rectangle-perso.png', 969px, 219px);
+    margin-bottom: 20px;
+    position: relative;
+
+    ul {
+      margin-top: 24px;
+      margin-left: 40px;
+      li {
+        border: 3px solid #fff;
+        border-radius: 29px;
+        position: relative;
+        float: left;
+        margin-right: 25px;
+        // -webkit-filter: brightness(0.3);
+        // -moz-filter: brightness(0.3);
+        // -ms-filter: brightness(0.3);
+        // filter: brightness(0.3);
+        opacity: 0.3;
+        box-shadow: 3px 5px 5px #000;
+
+        &.perso1 {
+          .img-background('persos/perso5.png', 156px, 157px);
+        }
+        &.perso2 {
+          .img-background('persos/perso2.png', 156px, 157px);
+        }
+        &.perso3 {
+          .img-background('persos/perso1.png', 156px, 157px);
+        }
+        &.perso4 {
+          .img-background('persos/perso4.png', 156px, 157px);
+        }
+        &.perso5 {
+          .img-background('persos/perso3.png', 156px, 157px);
+        }
+
+        &.selected {
+          opacity: 1;
+          // -webkit-filter: brightness(1);
+          // -moz-filter: brightness(1);
+          // -ms-filter: brightness(1);
+          // filter: brightness(1);
+        }
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+          // -webkit-filter: brightness(0.8);
+          // -moz-filter: brightness(0.8);
+          // -ms-filter: brightness(0.8);
+          // filter: brightness(0.8);
+        }
+      }
+    }
+  }
+
+  .personnages-detail {
+    .img-background('personnage-detail.png', 970px, 492px);
+    position: relative;
+    overflow: hidden;
+    .arrow-left, .arrow-right {
+      cursor: pointer;
+    }
+
+    ul {
+      li {
+        position: relative;
+
+        .title {
+          margin-top: 25px;
+          margin-left: 80px;
+        }
+
+        .photo {
+          position: relative;
+          clear: both;
+          margin-top: 41px;
+          left: 80px;
+          border-bottom: 3px solid #000;
+        }
+
+        &.perso1 {
+          .title {
+            .img-background('persos/perso5_title.png', 304px, 30px);
+          }
+          .photo {
+            .img-background('persos/perso5_detail.png', 390px, 351px);
+
+            &::after {
+              content: '';
+              .img-background('persos/perso5-avatar.png', 49px, 121px);
+              position: absolute;
+              top: 216px;
+              left: 13px;
+            }
+          }
+          .detail {
+
+          }
+        }
+
+        &.perso2 {
+          .title {
+            .img-background('persos/perso2_title.png', 361px, 30px);
+          }
+          .photo {
+            .img-background('persos/perso2_detail.png', 390px, 351px);
+
+            &::after {
+              content: '';
+              .img-background('persos/perso2-avatar.png', 49px, 120px);
+              position: absolute;
+              top: 216px;
+              left: 13px;
+            }
+          }
+          .detail {
+          }
+        }
+        &.perso3 {
+          .title {
+            .img-background('persos/perso1_title.png', 299px, 34px);
+          }
+          .photo {
+            .img-background('persos/perso1_detail.png', 390px, 351px);
+
+            &::after {
+              content: '';
+              .img-background('persos/perso1-avatar.png', 49px, 114px);
+              position: absolute;
+              top: 222px;
+              left: 13px;
+            }
+          }
+          .detail {
+          }
+        }
+
+        &.perso4 {
+          .title {
+            .img-background('persos/perso4_title.png', 182px, 30px);
+          }
+          .photo {
+            .img-background('persos/perso4_detail.png', 390px, 351px);
+
+            &::after {
+              content: '';
+              .img-background('persos/perso4-avatar.png', 49px, 126px);
+              position: absolute;
+              top: 216px;
+              left: 13px;
+            }
+
+          }
+          .detail {
+          }
+        }
+
+        &.perso5 {
+          .title {
+            .img-background('persos/perso3_title.png', 304px, 33px);
+          }
+          .photo {
+            .img-background('persos/perso3_detail.png', 390px, 351px);
+
+            &::after {
+              content: '';
+              .img-background('persos/perso3-avatar.png', 55px, 127px);
+              position: absolute;
+              top: 216px;
+              left: 13px;
+            }
+
+          }
+          .detail {
+          }
+        }
+
+        .detail {
+          clear: both;
+          width: 400px;
+          height: 350px;
+          font-size: 16px;
+          letter-spacing: 0px;
+          position: absolute;
+          top:  94px;
+          left: 486px;
+          text-align: left;
+          p {
+            font-family: Arial;
+            line-height: 19px;
+            font-size: 15px;
+            color: #000 !important;
+            margin-bottom: 20px;
+          }
+        }
+
+      }
+    }
+
+    ul {
+      li {
+        width: 950px;
+        height: 494px;
+      }
+    }
+  }
+
+  .banner {
+    width: 950px;
+    position: relative;
+    margin-left: 5px !important;
+    // overflow: auto;
+    li {
+      list-style: none;
+      display: block;
+      float: left;
+      // ul li {
+      //   float: left;
+      // }
+    }
+  }
+}

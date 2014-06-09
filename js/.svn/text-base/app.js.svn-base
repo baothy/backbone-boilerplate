@@ -1,0 +1,119 @@
+// Filename: app.js
+define([
+  'backbone',
+  'router',
+  'config',
+  'utils',
+  'flowplayer',
+  'moment'
+], function(Backbone, Router, config, utils, flowplayer, Moment) {
+  var initialize = function(){
+    // Pass in our Router module and call it's initialize function
+
+    Offline.options = {checks: {image: {url: 'imgs/assets/hr.jpg'}}};
+
+    var addTemplateDesktopVersion = function () {
+        var el = document.getElementById('outer-container');
+        var template = '<div id="tqFooterBar"></div><footer class="main closed"></footer><a class="modalLink" href="#modal1">Click Me</a><div class="overlay"></div><div id="modal1" class="modal"><div id="modal-container"></div></div>';
+        // document.body.innerHTML += template;
+        el.insertAdjacentHTML('afterend', template);
+        // this.insertAfter(template, '#container');
+    };
+
+    // Avoid `console` errors in browsers that lack a console.
+    if (!(window.console && console.log)) {
+      (function() {
+        var noop = function() {};
+        var methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'markTimeline', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
+        var length = methods.length;
+        var console = window.console = {};
+        while (length--) {
+            console[methods[length]] = noop;
+        }
+      }());
+    }
+
+    window.onresize = function () {
+      var cssLeft = $('.logo').offset().left + 2;
+      $('.webGames > .quiz, .webGames > .survey, .webGames > .vote').css('left', cssLeft + 'px');
+    };
+
+    window.setBgColor = function (id) {
+      var bgcolor = '';
+      switch (id) {
+        case '1':
+          bgcolor = 'custom-dark-blue';
+          break;
+        case '2':
+          bgcolor = 'custom-green';
+          break;
+        case '4':
+          bgcolor = 'custom-gray';
+          break;
+        case '3':
+          bgcolor = 'custom-red';
+          break;
+      }
+      $('body').attr('class', '');
+      $('body').addClass(bgcolor);
+    };
+
+    window.setAvatar = function () {
+      $('.bt-close').trigger('click');
+    };
+
+    window.closePopup = function () {
+      $('.bt-close').trigger('click', ['confirm-close']);
+    };
+
+    window.sendEventGA = function (category, action, label, value) {
+      label = label || null;
+      value = value || null;
+      ga('send', 'event', category, action, label, value);
+    };
+
+    window.sendEventPageViewGA = function (param) {
+      ga('send', 'pageview', param);
+    };
+
+    $('.modalLink').modal({
+      trigger: '.modalLink',          // id or class of link or button to trigger modal
+      olay:'div.overlay',             // id or class of overlay
+      modals:'div.modal',             // id or class of modal
+      animationEffect: 'fadeIn',   // overlay effect | slideDown or fadeIn | default=fadeIn
+      animationSpeed: 400,            // speed of overlay in milliseconds | default=400
+      moveModalSpeed: 'slow',         // speed of modal movement when window is resized | slow or fast | default=false
+      background: '000',           // hexidecimal color code - DONT USE #
+      opacity: 0.8,                   // opacity of modal |  0 - 1 | default = 0.8
+      openOnLoad: false,              // open modal on page load | true or false | default=false
+      docClose: false,                 // click document to close | true or false | default=true
+      closeByEscape: false,            // close modal by escape key | true or false | default=true
+      moveOnScroll: true,             // move modal when window is scrolled | true or false | default=false
+      resizeWindow: false,             // move modal when window is resized | true or false | default=false
+      close:'.bt-close'               // id or class of close button
+    });
+
+    window.isMobile = false;
+
+    if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+      window.isMobile = true;
+
+      $.getScript( "js/plugins/fastClick/fastclick.js" )
+        .done(function( script, textStatus ) {
+          FastClick.attach(document.body);
+        })
+        .fail(function( jqxhr, settings, exception ) {
+          console.log('error loading script fastClick');
+      });
+    }
+
+    // addTemplateDesktopVersion();
+
+    Router.initialize();
+
+  };
+
+  return {
+    initialize: initialize
+  };
+});
